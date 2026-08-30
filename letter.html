@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter for Bhavika 🎀</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient-fireflies"></div>
+<span class="corner-bow tl">🎀</span>
+<span class="corner-bow tr">🎀</span>
+
+<div class="music-widget">
+  <button class="music-toggle" id="musicToggle">🎀 Music</button>
+  <div class="music-panel" id="musicPanel">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2iZeKe5avjtKVmjfSFkpxd?utm_source=generator&si=3a1d1339cdcf441e"
+      width="100%" height="152" frameborder="0" allowfullscreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="eyebrow">for your eyes only</div>
+  <h1 class="display">A little letter 🎀</h1>
+  <div class="bow-divider">🎀</div>
+
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope">
+      <div class="envelope-body"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-seal">B</div>
+    </div>
+    <p class="envelope-hint" id="envelopeHint">tap the envelope to open it</p>
+  </div>
+
+  <div class="letter-paper" id="letterPaper">
+    <p>My cutu lil Baby,</p>
+
+
+    <p>
+    I honestly don’t even know how to put into words how much I love you—just know that I love you more 
+    than anyone ever could. Your notifications alone bring the biggest smile to my face, and knowing 
+    you care for me helps me rest easy every night.
+    </p>
+
+    <div class="letter-photos">
+      <img src="photos/2.jpeg" alt="Sanvi and you" style="--rot:-4deg">
+      <img src="photos/3.jpeg" alt="A memory" style="--rot:3deg">
+      <img src="photos/4.jpeg" alt="Sanvi smiling" style="--rot:-2deg">
+    </div>
+
+    <p>
+     You’re the girl who always checks on me, cares for me, puts in endless effort, and makes me feel truly valued. 
+     You’ve given me so much, and now it’s my turn to make you feel as special as you make me feel—not just on your birthday, but 
+     every single day.Now I’m right by your side. Just focus on your health and your studies; I’ve got the rest.
+    </p>
+    <p>
+      So happy birthday, Bhavika. Here's to more memories, more silly arguments about nothing,
+      more late-night talks, and many, many more birthdays with you.
+    </p>
+    <p class="signoff">Yours Sarvi🎀</p>
+  </div>
+
+  <a href="gallery.html" class="btn" id="nextBtn" style="margin-top:30px; display:none;">See your gallery →</a>
+</div>
+
+<nav class="site-nav">
+  <a href="index.html">Countdown</a>
+  <a href="messages.html">Wishes</a>
+  <a href="posters.html">Posters</a>
+  <a href="letter.html">Letter</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="cake.html">Cake</a>
+</nav>
+
+<script src="script.js"></script>
+<script>
+  guardPage();
+
+  const envelope = document.getElementById("envelope");
+  const letterPaper = document.getElementById("letterPaper");
+  const hint = document.getElementById("envelopeHint");
+  const nextBtn = document.getElementById("nextBtn");
+
+  envelope.addEventListener("click", () => {
+    envelope.classList.add("open");
+    letterPaper.classList.add("show");
+    hint.textContent = "🎀";
+    nextBtn.style.display = "inline-block";
+    letterPaper.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+</script>
+</body>
+</html>

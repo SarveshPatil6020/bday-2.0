@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make a Wish, Bhavika 🎂</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient-fireflies"></div>
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+<span class="corner-bow tl">🎀</span>
+<span class="corner-bow tr">🎀</span>
+
+<div class="page">
+  <div class="eyebrow">the final stop</div>
+  <h1 class="display">Make a wish, <span class="script-name">Bhavika</span> 🎀</h1>
+  <div class="bow-divider">🎀</div>
+  <p class="lead">The music pauses here — this last bit gets its own little song.
+  Blow out the candles (click each flame), then press play.</p>
+
+  <div class="cake-wrap">
+    <svg id="cakeSvg" width="320" height="300" viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- ribbon on plate -->
+      <ellipse cx="160" cy="270" rx="130" ry="14" fill="#4a1030" opacity="0.6"/>
+      <!-- bottom tier -->
+      <rect x="60" y="190" width="200" height="70" rx="10" fill="#ff9ec4"/>
+      <rect x="60" y="190" width="200" height="14" fill="#ffd3e6"/>
+      <!-- middle tier -->
+      <rect x="90" y="140" width="140" height="60" rx="10" fill="#f6c667"/>
+      <rect x="90" y="140" width="140" height="12" fill="#fbe0a8"/>
+      <!-- top tier -->
+      <rect x="115" y="100" width="90" height="50" rx="10" fill="#e08bb0"/>
+      <rect x="115" y="100" width="90" height="10" fill="#f3c2d8"/>
+      <!-- little bow on the cake -->
+      <path d="M160 100 C 150 92, 150 108, 160 102 C 170 108, 170 92, 160 100 Z" fill="#c9477e"/>
+      <circle cx="160" cy="100" r="3" fill="#a83266"/>
+      <!-- drips -->
+      <circle cx="80" cy="192" r="7" fill="#ffd3e6"/>
+      <circle cx="140" cy="192" r="6" fill="#ffd3e6"/>
+      <circle cx="200" cy="192" r="7" fill="#ffd3e6"/>
+      <circle cx="240" cy="192" r="6" fill="#ffd3e6"/>
+
+      <!-- candles (click the group) -->
+      <g class="candle" data-candle="1">
+        <rect x="128" y="78" width="8" height="24" fill="#fff5f8"/>
+        <path class="flame" d="M132 78 C 126 70, 138 62, 132 52 C 138 62, 140 72, 132 78 Z" fill="#f6c667"/>
+        <circle class="smoke" cx="132" cy="55" r="4" fill="#e6c9d6"/>
+      </g>
+      <g class="candle" data-candle="2">
+        <rect x="156" y="70" width="8" height="32" fill="#fff5f8"/>
+        <path class="flame" d="M160 70 C 154 60, 168 50, 160 38 C 168 50, 170 62, 160 70 Z" fill="#ff9ec4"/>
+        <circle class="smoke" cx="160" cy="43" r="4" fill="#e6c9d6"/>
+      </g>
+      <g class="candle" data-candle="3">
+        <rect x="184" y="78" width="8" height="24" fill="#fff5f8"/>
+        <path class="flame" d="M188 78 C 182 70, 194 62, 188 52 C 194 62, 196 72, 188 78 Z" fill="#f6c667"/>
+        <circle class="smoke" cx="188" cy="55" r="4" fill="#e6c9d6"/>
+      </g>
+    </svg>
+  </div>
+
+  <p class="cake-caption" id="cakeStatus">3 candles left. Click each flame to blow it out 🕯️</p>
+
+  <button class="btn" id="playSongBtn" style="margin-top:10px;" disabled>🎵 Play Happy Birthday (light all candles first)</button>
+
+  <div style="margin-top:34px;">
+    <a href="index.html" class="btn btn-ghost">↺ Relive the surprise from the start</a>
+  </div>
+
+  <footer class="credit">made with love, one tag at a time 💛</footer>
+</div>
+
+<nav class="site-nav">
+  <a href="index.html">Countdown</a>
+  <a href="messages.html">Wishes</a>
+  <a href="posters.html">Posters</a>
+  <a href="letter.html">Letter</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="cake.html">Cake</a>
+</nav>
+
+<script src="script.js"></script>
+<script>
+  guardPage();
+
+  const candles = document.querySelectorAll(".candle");
+  const status = document.getElementById("cakeStatus");
+  const playBtn = document.getElementById("playSongBtn");
+  const canvas = document.getElementById("confettiCanvas");
+  let blownCount = 0;
+
+  candles.forEach((c) => {
+    c.addEventListener("click", () => {
+      if (c.classList.contains("blown")) return;
+      c.classList.add("blown");
+      blownCount++;
+      const left = candles.length - blownCount;
+      status.textContent = left > 0
+        ? `${left} candle${left > 1 ? "s" : ""} left. Keep going 🕯️`
+        : "All candles out — make your wish! ✨";
+
+      if (blownCount === candles.length) {
+        playBtn.disabled = false;
+        playBtn.textContent = "🎵 Play Happy Birthday";
+        burstConfetti(canvas, 3500);
+      }
+    });
+  });
+
+  playBtn.addEventListener("click", () => {
+    playBirthdayTune();
+    burstConfetti(canvas, 2500);
+  });
+</script>
+</body>
+</html>

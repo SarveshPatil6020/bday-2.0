@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Surprise for my cutu baby 🌙</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient-fireflies"></div>
+<span class="corner-bow tl">🎀</span>
+<span class="corner-bow tr">🎀</span>
+
+<div class="page" id="lockPage">
+  <div class="eyebrow">a little something is waiting</div>
+  <div class="lock-icon">🎀🔒🎀</div>
+  <h1 class="display">Not yet, <span class="script-name">Bhavika</span>...</h1>
+  <p class="lead">Madam thoda wait krlo itni bhi kya jaldi hai. officially adult hone ke liye bss ittu sa time bacha hai :</p>
+
+  <div class="countdown" id="countdown">
+    <div class="unit"><span class="num" id="d">00</span><span class="label">Days</span></div>
+    <div class="unit"><span class="num" id="h">00</span><span class="label">Hours</span></div>
+    <div class="unit"><span class="num" id="m">00</span><span class="label">Mins</span></div>
+    <div class="unit"><span class="num" id="s">00</span><span class="label">Secs</span></div>
+  </div>
+
+  <button class="btn" id="enterBtn" disabled>Locked until Sep 1 🔒</button>
+  <p style="margin-top:16px; font-size:0.8rem; color: var(--lavender);" id="hintText">
+    Keep this tab open, or just come back after midnight on September 1st 💛
+  </p>
+</div>
+
+<script src="script.js"></script>
+<script>
+  const dEl = document.getElementById("d");
+  const hEl = document.getElementById("h");
+  const mEl = document.getElementById("m");
+  const sEl = document.getElementById("s");
+  const enterBtn = document.getElementById("enterBtn");
+  const hintText = document.getElementById("hintText");
+  const pad = n => String(n).padStart(2, "0");
+
+  function tick() {
+    const now = new Date();
+    const diff = BIRTHDAY_TARGET - now;
+
+    if (diff <= 0) {
+      dEl.textContent = "00"; hEl.textContent = "00"; mEl.textContent = "00"; sEl.textContent = "00";
+      enterBtn.disabled = false;
+      enterBtn.textContent = "Enter your surprise 🎉";
+      enterBtn.onclick = () => window.location.href = "messages.html";
+      hintText.textContent = "It's here. Happy Birthday, Bhavika 💛";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    dEl.textContent = pad(days);
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+  }
+
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  // If somehow already unlocked on load, skip the wait immediately.
+  if (isUnlocked()) tick();
+</script>
+</body>
+</html>

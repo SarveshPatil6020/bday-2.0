@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bhavika 🎀</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient-fireflies"></div>
+<div id="balloonLayer"></div>
+<div class="hug-layer" id="hugLayer"></div>
+<span class="corner-bow tl">🎀</span>
+<span class="corner-bow tr">🎀</span>
+
+<div class="music-widget">
+  <button class="music-toggle" id="musicToggle">🎀 Music</button>
+  <div class="music-panel" id="musicPanel">
+    <!-- EDIT ME: replace the track ID below with your own song's Spotify ID (see README) -->
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1HNkqx9Ahdgi1Ixy2xkKkL?utm_source=generator&si=97bb891fefd2470b"
+      width="100%" height="152" frameborder="0" allowfullscreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <p class="music-hint">🎀 replace with your song — see README</p>
+  </div>
+</div>
+
+
+<div class="page">
+  <div class="eyebrow">September 1st</div>
+  <h1 class="display">Happy Birthday,<br><span class="script-name">Bhavika</span> 🎀</h1>
+  <div class="bow-divider">🎀</div>
+  <p class="lead">
+   Finally 18! Time really flies na?—it’s hard to believe it’s already been over a year and a half since i met you cutu. 
+   Every single moment with you has been an absolute treasure. You are the best ever thing happened to me.
+  </p>
+  <p class="lead">
+   I wish so much that you were here right now—it would have been amazing! But just a few more 
+   days left until we're together and having the time of our lives.
+   Manifesting celebrating your next birthday together in Pune!
+  </p>
+
+  <div class="hug-wrap">
+    <button class="hug-btn" id="hugBtn">🎀tap for a little love</button>
+    <span class="hug-count" id="hugCount">tap it</span>
+  </div>
+
+  <a href="posters.html" class="btn" style="margin-top:22px;">See your posters →</a>
+</div>
+
+<nav class="site-nav">
+  <a href="index.html">Countdown</a>
+  <a href="messages.html">Wishes</a>
+  <a href="posters.html">Posters</a>
+  <a href="letter.html">Letter</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="cake.html">Cake</a>
+</nav>
+
+<script src="script.js"></script>
+<script>
+  guardPage();
+
+  // floating balloons decoration (pink & gold palette)
+  const layer = document.getElementById("balloonLayer");
+  const balloonColors = [
+    "linear-gradient(160deg,#ff9ec4,#f6c667)",
+    "linear-gradient(160deg,#ffd3e6,#c9477e)",
+    "linear-gradient(160deg,#f6c667,#ff9ec4)",
+    "linear-gradient(160deg,#ffb3d1,#a83266)",
+  ];
+  for (let i = 0; i < 14; i++) {
+    const b = document.createElement("div");
+    b.className = "balloon";
+    b.style.left = Math.random() * 96 + "vw";
+    b.style.background = balloonColors[i % balloonColors.length];
+    b.style.animationDuration = 9 + Math.random() * 8 + "s";
+    b.style.animationDelay = Math.random() * 10 + "s";
+    layer.appendChild(b);
+  }
+</script>
+</body>
+</html>
