@@ -5,7 +5,7 @@
 // ---- 1. THE BIG DATE ----------------------------------------------------
 // Change the date below if you need to. Format: YYYY-MM-DDTHH:MM:SS
 // This is read in the VISITOR'S local time.
-const BIRTHDAY_TARGET = new Date("2026-08-01T00:01:00");
+const BIRTHDAY_TARGET = new Date("2026-09-01T00:01:00");
 
 function isUnlocked() {
   return new Date() >= BIRTHDAY_TARGET;
